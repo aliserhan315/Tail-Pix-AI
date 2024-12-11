@@ -1,7 +1,5 @@
-/* eslint-disable prefer-spread */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable prefer-const */
- 
+
 import { type ClassValue, clsx } from "clsx";
 import qs from "qs";
 import { twMerge } from "tailwind-merge";
@@ -91,6 +89,7 @@ export const debounce = (func: (...args: any[]) => void, delay: number) => {
   let timeoutId: NodeJS.Timeout | null;
   return (...args: any[]) => {
     if (timeoutId) clearTimeout(timeoutId);
+    // eslint-disable-next-line prefer-spread
     timeoutId = setTimeout(() => func.apply(null, args), delay);
   };
 };
@@ -133,14 +132,15 @@ export const download = (url: string, filename: string) => {
 };
 
 // DEEP MERGE OBJECTS
+ 
 export const deepMergeObjects = (obj1: any, obj2: any) => {
   if(obj2 === null || obj2 === undefined) {
     return obj1;
   }
 
-  let output = { ...obj2 };
+  const output = { ...obj2 };
 
-  for (let key in obj1) {
+  for (const key in obj1) {
     if (obj1.hasOwnProperty(key)) {
       if (
         obj1[key] &&
