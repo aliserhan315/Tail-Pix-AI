@@ -3,7 +3,11 @@ import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
 const isProtectedRoute = createRouteMatcher(['/dashboard(.*)', '/forum(.*)'])
 
 export default clerkMiddleware(async (auth, req) => {
-  if (isProtectedRoute(req)) await auth.protect()
+  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+  publicRoutes:['/api/webhooks/clerk'];
+ 
+  if (isProtectedRoute(req)) await auth.protect();
+   
 })
 
 export const config = {
