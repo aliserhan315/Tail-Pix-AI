@@ -4,7 +4,7 @@ const isProtectedRoute = createRouteMatcher(['/dashboard(.*)', '/forum(.*)'])
 
 export default clerkMiddleware(async (auth, req) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-  publicRoutes:['/api/webhooks/clerk'];
+  publicRoutes:['/api/webhooks'];
  
   if (isProtectedRoute(req)) await auth.protect();
    
